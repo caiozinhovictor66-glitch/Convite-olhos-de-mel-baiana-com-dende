@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Um convite pra você 💌</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ffe0eb,#fff7fa,#ffe6d8);font-family:Arial,sans-serif;color:#653d51;padding:15px;box-sizing:border-box}
+main{background:#ffffffed;max-width:430px;width:100%;padding:30px 20px;border-radius:28px;text-align:center;box-shadow:0 12px 40px #d9437830;box-sizing:border-box}
+.sticker{font-size:60px}
+h1,h2{color:#b73569}
+p{font-size:18px;line-height:1.6}
+.note{font-size:14px;color:#a66d84}
+button{padding:15px 18px;border:0;border-radius:30px;font-size:16px;font-weight:bold;margin:7px;cursor:pointer}
+#yes{background:#f0528c;color:white}
+#no{background:#fff0f5;color:#a14b70}
+#success{display:none}
+#again{background:#fff0f5;color:#a14b70}
+</style>
+</head>
+<body>
+<main>
+<section id="invite">
+<div>UM CONVITE ESPECIAL 💌</div>
+<div class="sticker">🐻💗</div>
+<h1>Oi, meu bem!</h1>
+<p>Tenho uma perguntinha que tô querendo te fazer…</p>
+<p><strong>Aceita sair comigo algum dia a partir de 23/10?</strong></p>
+<p class="note">Prometo boas risadas, companhia gostosa e um momentinho só nosso. 🥹</p>
+<button id="yes">SIM, EU ACEITO! 💖</button>
+<button id="no">Hmmm… 🤭</button>
+<p id="tease" class="note"></p>
+<p class="note">Feito com carinho, especialmente pra você ✨</p>
+</section>
+<section id="success">
+<div class="sticker">🥹💞</div>
+<h2>Temos um encontro!</h2>
+<p>Você acabou de deixar meu dia mais bonito, meu bem.</p>
+<p>Agora só falta a gente combinar direitinho. Já tô guardando um sorriso pra esse dia. 💗</p>
+<p>🌷 A partir de 23/10!</p>
+<button id="again">Ver o convite de novo</button>
+</section>
+</main>
+<script>
+let n=0;
+const msgs=['Posso tentar te convencer com um docinho? 🍓','Pensa com carinho, meu bem 🥹','Esse botão tá tímido, igual eu chamando você pra sair 🤭','Tudo bem pensar… mas eu ia amar! 💗'];
+document.getElementById('yes').onclick=()=>{
+document.getElementById('invite').style.display='none';
+document.getElementById('success').style.display='block';
+for(let i=0;i<25;i++){let h=document.createElement('span');h.textContent=['💗','💕','🌸','✨'][i%4];h.style.cssText='position:fixed;left:'+(Math.random()*100)+'%;bottom:0;font-size:26px;pointer-events:none;animation:rise 3s linear forwards';document.body.appendChild(h);setTimeout(()=>h.remove(),3000);}
+};
+document.getElementById('no').onclick=()=>{document.getElementById('tease').textContent=msgs[Math.min(n,3)];n++;};
+document.getElementById('again').onclick=()=>{document.getElementById('success').style.display='none';document.getElementById('invite').style.display='block';};
+</script>
+<style>@keyframes rise{to{transform:translateY(-100vh);opacity:0}}</style>
+</body>
+</html
+  >
