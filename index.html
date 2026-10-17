@@ -15,35 +15,34 @@
       font-family: Arial, sans-serif;
       background: url('fundo.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #521c36;
+      color: #3b0e22;
     }
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.25); /* Escurece levemente a foto para destacar o cartão */
+      background: rgba(0, 0, 0, 0.12);
       z-index: 0;
     }
     main {
       position: relative;
       z-index: 1;
-      /* Fundo semi-transparente estilo vidro fosco para ver a foto atrás */
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.48);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       max-width: 480px;
       width: 100%;
       padding: 35px 22px;
       border-radius: 28px;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
     .sticker { font-size: 60px; margin: 18px; }
-    h1 { color: #b73569; font-size: 38px; margin: 12px; }
-    p { font-size: 18px; line-height: 1.6; font-weight: 500; }
-    .note { font-size: 14px; color: #733350; font-weight: bold; }
+    h1 { color: #8c1c45; font-size: 38px; margin: 12px; font-weight: 800; }
+    p { font-size: 18px; line-height: 1.6; font-weight: 600; color: #2e0819; }
+    .note { font-size: 14px; color: #5e1331; font-weight: bold; }
     
     .button-group {
       display: flex;
@@ -68,23 +67,24 @@
       background: #f0528c;
       color: white;
       z-index: 2;
-      box-shadow: 0 4px 15px rgba(240, 82, 140, 0.4);
+      box-shadow: 0 4px 15px rgba(240, 82, 140, 0.5);
     }
     #no {
-      background: rgba(255, 240, 245, 0.9);
-      color: #a14b70;
+      background: rgba(255, 240, 245, 0.85);
+      color: #8c1c45;
     }
     #success { display: none; }
-    #success h2 { color: #b73569; }
+    #success h2 { color: #8c1c45; font-size: 32px; }
     #again {
       background: transparent;
-      color: #b73569;
+      color: #8c1c45;
       text-decoration: underline;
+      font-weight: bold;
     }
     #tease {
       min-height: 24px;
-      color: #b73569;
-      font-weight: bold;
+      color: #8c1c45;
+      font-weight: 800;
       font-size: 15px;
       margin-top: 10px;
     }
@@ -119,7 +119,7 @@
     </div>
 
     <div id="tease"></div>
-    <div class="note" style="margin-top:20px;">Codado com carinho especialmente pra você, olho de mel ✨</div>
+    <div class="note" style="margin-top:20px;">Codado com carinho especialmente pra você, olhos de mel ✨</div>
   </main>
 
   <main id="success">
