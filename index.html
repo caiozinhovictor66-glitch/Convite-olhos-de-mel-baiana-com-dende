@@ -13,17 +13,28 @@
       place-items: center;
       padding: 20px;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ffe0eb, #fff7fa, #ffe6d8);
+      background: url('fundo.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #653d51;
     }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 224, 235, 0.4);
+      z-index: 0;
+    }
     main {
-      background: #ffffffeb;
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(5px);
       max-width: 480px;
       width: 100%;
       padding: 35px 22px;
       border-radius: 28px;
       text-align: center;
-      box-shadow: 0 15px 50px #d9437825;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
       overflow: hidden;
     }
     .sticker { font-size: 60px; margin: 18px; }
@@ -78,6 +89,7 @@
       bottom: -30px;
       animation: up 3s linear forwards;
       pointer-events: none;
+      z-index: 10;
     }
     @keyframes up {
       to {
@@ -110,7 +122,7 @@
     <div class="sticker">🥹💞</div>
     <h2>Temos um encontro! ✨</h2>
     <p>Você acabou de deixar meu dia mais bonito, meu bem.</p>
-    <p>Agora só falta a gente combinar direitinho. Já tô guardando um sorriso pra esse dia. 💗</p>
+    <p>Agora só falta a gente combinar direitinho. Já tô imaginando um sorriso bobo seu para esse dia.👻</p>
     <p><strong>🌷 A partir de 23/10!</strong></p>
     <button id="again">Ver o convite de novo</button>
   </main>
@@ -149,7 +161,6 @@
       tease.textContent = msgs[Math.min(n, msgs.length - 1)];
       n++;
 
-      // Aumenta o tamanho do botão SIM a cada clique no "Hmmm..."
       yesScale += 0.25;
       yesBtn.style.transform = `scale(${yesScale})`;
     };
