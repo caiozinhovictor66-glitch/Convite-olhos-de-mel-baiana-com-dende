@@ -1,59 +1,168 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Um convite pra você 💌</title>
-<style>
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ffe0eb,#fff7fa,#ffe6d8);font-family:Arial,sans-serif;color:#653d51;padding:15px;box-sizing:border-box}
-main{background:#ffffffed;max-width:430px;width:100%;padding:30px 20px;border-radius:28px;text-align:center;box-shadow:0 12px 40px #d9437830;box-sizing:border-box}
-.sticker{font-size:60px}
-h1,h2{color:#b73569}
-p{font-size:18px;line-height:1.6}
-.note{font-size:14px;color:#a66d84}
-button{padding:15px 18px;border:0;border-radius:30px;font-size:16px;font-weight:bold;margin:7px;cursor:pointer}
-#yes{background:#f0528c;color:white}
-#no{background:#fff0f5;color:#a14b70}
-#success{display:none}
-#again{background:#fff0f5;color:#a14b70}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Um convite pra você 💌</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe0eb, #fff7fa, #ffe6d8);
+      color: #653d51;
+    }
+    main {
+      background: #ffffffeb;
+      max-width: 480px;
+      width: 100%;
+      padding: 35px 22px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 15px 50px #d9437825;
+      overflow: hidden;
+    }
+    .sticker { font-size: 60px; margin: 18px; }
+    h1 { color: #b73569; font-size: 38px; margin: 12px; }
+    p { font-size: 18px; line-height: 1.6; }
+    .note { font-size: 14px; color: #a66d84; }
+    
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    
+    button {
+      padding: 15px 20px;
+      border: 0;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, font-size 0.2s ease;
+    }
+    
+    #yes {
+      background: #f0528c;
+      color: white;
+      z-index: 2;
+    }
+    #no {
+      background: #fff0f5;
+      color: #a14b70;
+    }
+    #success { display: none; }
+    #success h2 { color: #b73569; }
+    #again {
+      background: transparent;
+      color: #b73569;
+      text-decoration: underline;
+    }
+    #tease {
+      min-height: 24px;
+      color: #d94378;
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      animation: up 3s linear forwards;
+      pointer-events: none;
+    }
+    @keyframes up {
+      to {
+        transform: translateY(-110vh) rotate(40deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-<main>
-<section id="invite">
-<div>UM CONVITE ESPECIAL 💌</div>
-<div class="sticker">🐻💗</div>
-<h1>Oi, meu bem!</h1>
-<p>Tenho uma perguntinha que tô querendo te fazer…</p>
-<p><strong>Aceita sair comigo algum dia a partir de 23/10?</strong></p>
-<p class="note">Prometo boas risadas, companhia gostosa e um momentinho só nosso. 🥹</p>
-<button id="yes">SIM, EU ACEITO! 💖</button>
-<button id="no">Hmmm… 🤭</button>
-<p id="tease" class="note"></p>
-<p class="note">Feito com carinho, especialmente pra você ✨</p>
-</section>
-<section id="success">
-<div class="sticker">🥹💞</div>
-<h2>Temos um encontro!</h2>
-<p>Você acabou de deixar meu dia mais bonito, meu bem.</p>
-<p>Agora só falta a gente combinar direitinho. Já tô guardando um sorriso pra esse dia. 💗</p>
-<p>🌷 A partir de 23/10!</p>
-<button id="again">Ver o convite de novo</button>
-</section>
-</main>
-<script>
-let n=0;
-const msgs=['Posso tentar te convencer com um docinho? 🍓','Pensa com carinho, meu bem 🥹','Esse botão tá tímido, igual eu chamando você pra sair 🤭','Tudo bem pensar… mas eu ia amar! 💗'];
-document.getElementById('yes').onclick=()=>{
-document.getElementById('invite').style.display='none';
-document.getElementById('success').style.display='block';
-for(let i=0;i<25;i++){let h=document.createElement('span');h.textContent=['💗','💕','🌸','✨'][i%4];h.style.cssText='position:fixed;left:'+(Math.random()*100)+'%;bottom:0;font-size:26px;pointer-events:none;animation:rise 3s linear forwards';document.body.appendChild(h);setTimeout(()=>h.remove(),3000);}
-};
-document.getElementById('no').onclick=()=>{document.getElementById('tease').textContent=msgs[Math.min(n,3)];n++;};
-document.getElementById('again').onclick=()=>{document.getElementById('success').style.display='none';document.getElementById('invite').style.display='block';};
-</script>
-<style>@keyframes rise{to{transform:translateY(-100vh);opacity:0}}</style>
+
+  <main id="invite">
+    <div class="note">UM CONVITE ESPECIAL 💌</div>
+    <div class="sticker">🌞💗</div>
+    <h1>Oi, meu bem!</h1>
+    <p>Uma proposta que eu quero te fazer...</p>
+    <p><strong>Aceita sair comigo algum dia a partir de 23/10?</strong></p>
+    <p class="note">Prometo boas risadas, companhia gostosa e um momentinho só nosso. 🤓😸</p>
+
+    <div class="button-group">
+      <button id="yes">SIM, EU ACEITO! 💖</button>
+      <button id="no">Hmmm… 🤭</button>
+    </div>
+
+    <div id="tease"></div>
+    <div class="note" style="margin-top:20px;">Feito com carinho, especialmente pra você ✨</div>
+  </main>
+
+  <main id="success">
+    <div class="sticker">🥹💞</div>
+    <h2>Temos um encontro! ✨</h2>
+    <p>Você acabou de deixar meu dia mais bonito, meu bem.</p>
+    <p>Agora só falta a gente combinar direitinho. Já tô guardando um sorriso pra esse dia. 💗</p>
+    <p><strong>🌷 A partir de 23/10!</strong></p>
+    <button id="again">Ver o convite de novo</button>
+  </main>
+
+  <script>
+    const invite = document.getElementById('invite');
+    const success = document.getElementById('success');
+    const tease = document.getElementById('tease');
+    const yesBtn = document.getElementById('yes');
+    const noBtn = document.getElementById('no');
+    
+    let n = 0;
+    let yesScale = 1;
+
+    yesBtn.onclick = () => {
+      invite.style.display = 'none';
+      success.style.display = 'block';
+      for (let i = 0; i < 25; i++) {
+        let h = document.createElement('span');
+        h.className = 'heart';
+        h.textContent = ['💗', '💕', '💖', '🌸', '✨'][i % 5];
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.fontSize = '25px';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 3000);
+      }
+    };
+
+    noBtn.onclick = () => {
+      const msgs = [
+        'Posso tentar te convencer com um docinho? 🍓',
+        'Poxa, meu bem… pensa com carinho 🥹',
+        'Esse botão tá tímido, igual eu chamando você pra sair 🤭',
+        'Olha o tamanho do SIM! Não tem como recusar agora! 💗'
+      ];
+      tease.textContent = msgs[Math.min(n, msgs.length - 1)];
+      n++;
+
+      // Aumenta o tamanho do botão SIM a cada clique no "Hmmm..."
+      yesScale += 0.25;
+      yesBtn.style.transform = `scale(${yesScale})`;
+    };
+
+    document.getElementById('again').onclick = () => {
+      success.style.display = 'none';
+      invite.style.display = 'block';
+      tease.textContent = '';
+      n = 0;
+      yesScale = 1;
+      yesBtn.style.transform = 'scale(1)';
+    };
+  </script>
+
 </body>
-</html
-  >
+</html>
